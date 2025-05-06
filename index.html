@@ -79,8 +79,17 @@
       margin: 5vh auto 2rem;
       z-index: 1;
     }
-    #viz, .curved-text {
-      position: absolute; inset: 0; pointer-events: none;
+    #viz {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+    }
+/* keep curved text atop it */
+.curved-text {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
     }
     .curved-text svg { width:100%; height:100%; }
     .curved-text circle {
@@ -207,7 +216,7 @@
   <button id="gallery-btn">Gallery</button>
 
   <div class="center-container">
-    <canvas id="viz" width="460" height="460"></canvas>
+    <canvas id="viz"></canvas>
     <div class="curved-text">
       <svg viewBox="0 0 300 300">
         <defs>
@@ -285,22 +294,41 @@
     const data     = new Uint8Array(bufLen);
     const canvasEl = document.getElementById('viz'),
           ctx      = canvasEl.getContext('2d');
-    function draw() {
-      requestAnimationFrame(draw);
-      analyser.getByteFrequencyData(data);
-      ctx.clearRect(0,0,canvasEl.width,canvasEl.height);
-      const cx=canvasEl.width/2, cy=canvasEl.height/2, rad=canvasEl.width/3;
-      for(let i=0;i<bufLen;i++){
-        const ang=(i/bufLen)*2*Math.PI;
-        const len=(data[i]/255)*30+5;
-        ctx.strokeStyle=`hsl(${ang*180/Math.PI},80%,60%)`;
-        ctx.lineWidth=2;
-        ctx.beginPath();
-        ctx.moveTo(cx+Math.cos(ang)*rad, cy+Math.sin(ang)*rad);
-        ctx.lineTo(cx+Math.cos(ang)*(rad+len), cy+Math.sin(ang)*(rad+len));
-        ctx.stroke();
-      }
-    }
+
+          function resizeCanvas() {
+  canvasEl.width  = canvasEl.clientWidth;
+  canvasEl.height = canvasEl.clientHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();  // initial sizing
+
+function draw() {
+  requestAnimationFrame(draw);
+  analyser.getByteFrequencyData(data);
+  ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+
+  const cx  = canvasEl.width  / 2;
+  const cy  = canvasEl.height / 2;
+  const rad = Math.min(canvasEl.width, canvasEl.height) / 3;
+
+  for (let i = 0; i < bufLen; i++) {
+    const ang = (i / bufLen) * Math.PI * 2;
+    const len = (data[i] / 255) * 30 + 5;
+    ctx.strokeStyle = `hsl(${ang*180/Math.PI},80%,60%)`;
+    ctx.lineWidth   = 2;
+    ctx.beginPath();
+    ctx.moveTo(
+      cx + Math.cos(ang) * rad,
+      cy + Math.sin(ang) * rad
+    );
+    ctx.lineTo(
+      cx + Math.cos(ang) * (rad + len),
+      cy + Math.sin(ang) * (rad + len)
+    );
+    ctx.stroke();
+  }
+}
+
     const bookBtn     = document.getElementById('book-btn'),
           bookingForm = document.getElementById('booking-form');
     bookBtn.addEventListener('click', async e=>{

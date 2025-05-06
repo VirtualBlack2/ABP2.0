@@ -11,7 +11,7 @@
       color: #fff;
     }
     body {
-      /* full‐screen background image */
+      /* full-screen background image */
       background: url('assets/matthead.png') center/cover no-repeat;
       display: flex;
       align-items: center;
@@ -42,6 +42,21 @@
     .thank-you-card .subtext {
       font-size: 0.85rem;
       color: #ddd;
+      margin-bottom: 1.5rem;
+    }
+    /* Follow button */
+    .follow-btn {
+      display: inline-block;
+      background: #E1306C;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .follow-btn:hover {
+      background: #C1275B;
     }
     @media (max-width: 480px) {
       .thank-you-card {
@@ -50,6 +65,10 @@
       }
       .thank-you-card .icon { font-size: 3rem; }
       .thank-you-card h1 { font-size: 1.5rem; }
+      .follow-btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
     }
   </style>
 </head>
@@ -58,7 +77,13 @@
     <div class="icon">🎉</div>
     <h1>Thanks for Reaching Out!</h1>
     <p>Your message has landed safely in my inbox. I can’t wait to chat about your session and ideas!</p>
-    <p class="subtext">I’ll get back to you within the next 24–48 hours. In the meantime, feel free to browse my gallery or follow on Instagram.</p>
+    <p class="subtext">
+      I’ll get back to you within the next 24–48 hours.<br>
+      In the meantime, feel free to browse my gallery or follow me on Instagram.
+    </p>
+    <a href="https://www.instagram.com/alibph0t0graphy/" target="_blank" class="follow-btn">
+      Follow on Instagram
+    </a>
   </div>
 </body>
 </html>
