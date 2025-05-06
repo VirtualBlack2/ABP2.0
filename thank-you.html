@@ -1,77 +1,64 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Thank You</title>
   <style>
-    /* fill the screen with a white background, center everything */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      font-family: "Raleway", sans-serif;
+      color: #fff;
+    }
     body {
-      background: #fff;
-      margin: 0;
-      height: 100vh;
+      /* full‐screen background image */
+      background: url('assets/matthead.png') center/cover no-repeat;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-family: sans-serif;
-      color: #333;
     }
-    .check {
-      font-size: 5rem;
-      color: #28a745;
-    }
-    .message {
-      font-size: 1.5rem;
-      margin-top: 1rem;
+    .thank-you-card {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 320px;
       text-align: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+    .thank-you-card .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+    .thank-you-card h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .thank-you-card p {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+    .thank-you-card .subtext {
+      font-size: 0.85rem;
+      color: #ddd;
+    }
+    @media (max-width: 480px) {
+      .thank-you-card {
+        padding: 1.5rem;
+        max-width: 90%;
+      }
+      .thank-you-card .icon { font-size: 3rem; }
+      .thank-you-card h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <div class="check">✔️</div>
-  <div class="message">
-    Thank you for contacting us!<br>
-    We will respond in 24–48 hours.
+  <div class="thank-you-card">
+    <div class="icon">🎉</div>
+    <h1>Thanks for Reaching Out!</h1>
+    <p>Your message has landed safely in my inbox. I can’t wait to chat about your session and ideas!</p>
+    <p class="subtext">I’ll get back to you within the next 24–48 hours. In the meantime, feel free to browse my gallery or follow on Instagram.</p>
   </div>
 </body>
 </html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Thank You</title>
-  <style>
-    /* fill the screen with a white background, center everything */
-    body {
-      background: #fff;
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: sans-serif;
-      color: #333;
-    }
-    .check {
-      font-size: 5rem;
-      color: #28a745;
-    }
-    .message {
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <div class="check">✔️</div>
-  <div class="message">
-    Thank you for contacting us!<br>
-    We will respond in 24–48 hours.
-  </div>
-</body>
-</html>
->>>>>>> 52988adddb7d48f426e8570d6c6383188011251a
